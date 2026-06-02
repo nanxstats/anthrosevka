@@ -1,11 +1,11 @@
-[buildPlans.IosevkaCustom]
-family = "Iosevka Custom"
+[buildPlans.AnthrosevkaMono]
+family = "Anthrosevka Mono"
 spacing = "normal"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
 
-[buildPlans.IosevkaCustom.variants.design]
+[buildPlans.AnthrosevkaMono.variants.design]
 one = "base"
 two = "straight-neck-serifless"
 four = "closed-serifless"
@@ -28,33 +28,33 @@ u = "toothless-rounded-serifless"
 w = "straight-flat-top-serifless"
 question = "corner"
 
-[buildPlans.IosevkaCustom.weights.Regular]
+[buildPlans.AnthrosevkaMono.weights.Regular]
 shape = 400
 menu = 400
 css = 400
 
-[buildPlans.IosevkaCustom.weights.Bold]
+[buildPlans.AnthrosevkaMono.weights.Bold]
 shape = 700
 menu = 700
 css = 700
 
-[buildPlans.IosevkaCustom.widths.Condensed]
+[buildPlans.AnthrosevkaMono.widths.Condensed]
 shape = 500
 menu = 3
 css = "condensed"
 
-[buildPlans.IosevkaCustom.widths.Normal]
+[buildPlans.AnthrosevkaMono.widths.Normal]
 shape = 600
 menu = 5
 css = "normal"
 
-[buildPlans.IosevkaCustom.slopes.Upright]
+[buildPlans.AnthrosevkaMono.slopes.Upright]
 angle = 0
 shape = "upright"
 menu = "upright"
 css = "normal"
 
-[buildPlans.IosevkaCustom.slopes.Italic]
+[buildPlans.AnthrosevkaMono.slopes.Italic]
 angle = 9.4
 shape = "italic"
 menu = "italic"
