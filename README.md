@@ -2,7 +2,7 @@
 
 ## Build
 
-Follow [building Iosevka from Source
+Follow [building Iosevka from source
 ](https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md)
 to set up the build environment.
 
