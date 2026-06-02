@@ -1,6 +1,6 @@
 [buildPlans.AnthrosevkaMono]
 family = "Anthrosevka Mono"
-spacing = "normal"
+spacing = "term"
 serifs = "sans"
 noCvSs = true
 exportGlyphNames = false
