@@ -200,38 +200,4 @@
     activateTab(savedTab);
   }
 
-  const copyButton = document.getElementById("copyCss");
-  const cssSnippet = document.getElementById("cssSnippet");
-  const initialCopyLabel = copyButton.textContent.trim();
-  let copyTimer = null;
-
-  function setCopiedState() {
-    copyButton.textContent = "Copied";
-    window.clearTimeout(copyTimer);
-    copyTimer = window.setTimeout(() => {
-      copyButton.textContent = initialCopyLabel;
-    }, 1500);
-  }
-
-  function fallbackCopy(text) {
-    const field = document.createElement("textarea");
-    field.value = text;
-    field.setAttribute("readonly", "");
-    field.style.position = "fixed";
-    field.style.insetBlockStart = "-100vh";
-    document.body.appendChild(field);
-    field.select();
-    document.execCommand("copy");
-    document.body.removeChild(field);
-  }
-
-  copyButton.addEventListener("click", async () => {
-    const text = cssSnippet.textContent.trim();
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      fallbackCopy(text);
-    }
-    setCopiedState();
-  });
 })();

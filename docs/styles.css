@@ -30,22 +30,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Linden Hill";
-  src: url("fonts/LindenHill-Regular.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Linden Hill";
-  src: url("fonts/LindenHill-Italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-}
-
 :root {
   color-scheme: light;
   --color-bg: oklch(1 0 0);
@@ -55,13 +39,12 @@
   --color-muted: oklch(0.43 0.012 270);
   --color-rule: oklch(0.82 0.006 270);
   --color-rule-strong: oklch(0.64 0.012 270);
-  --color-accent: oklch(0.4 0.15 270);
+  --color-accent: #991b1b;
   --color-accent-ink: oklch(1 0 0);
-  --color-focus: oklch(0.52 0.16 270);
+  --color-focus: #991b1b;
 
   --font-mono: "Anthrosevka Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono",
     "Roboto Mono", Menlo, Consolas, monospace;
-  --font-serif: "Linden Hill", Georgia, "Times New Roman", serif;
   --font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 
@@ -84,9 +67,9 @@
     --color-muted: oklch(0.7 0.01 270);
     --color-rule: oklch(0.32 0.008 270);
     --color-rule-strong: oklch(0.48 0.012 270);
-    --color-accent: oklch(0.76 0.12 270);
+    --color-accent: #fca5a5;
     --color-accent-ink: oklch(0.105 0 0);
-    --color-focus: oklch(0.78 0.14 270);
+    --color-focus: #fca5a5;
   }
 }
 
@@ -99,9 +82,9 @@
   --color-muted: oklch(0.43 0.012 270);
   --color-rule: oklch(0.82 0.006 270);
   --color-rule-strong: oklch(0.64 0.012 270);
-  --color-accent: oklch(0.4 0.15 270);
+  --color-accent: #991b1b;
   --color-accent-ink: oklch(1 0 0);
-  --color-focus: oklch(0.52 0.16 270);
+  --color-focus: #991b1b;
 }
 
 :root[data-theme="dark"] {
@@ -113,9 +96,9 @@
   --color-muted: oklch(0.7 0.01 270);
   --color-rule: oklch(0.32 0.008 270);
   --color-rule-strong: oklch(0.48 0.012 270);
-  --color-accent: oklch(0.76 0.12 270);
+  --color-accent: #fca5a5;
   --color-accent-ink: oklch(0.105 0 0);
-  --color-focus: oklch(0.78 0.14 270);
+  --color-focus: #fca5a5;
 }
 
 * {
@@ -131,7 +114,7 @@ body {
   margin: 0;
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-serif);
+  font-family: var(--font-ui);
   font-size: 1.125rem;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
@@ -189,7 +172,7 @@ button {
   border: 1px solid var(--color-rule-strong);
   border-radius: var(--radius);
   color: var(--color-ink);
-  font-family: var(--font-mono);
+  font-family: var(--font-ui);
   font-size: 0.875rem;
   transform: translateY(-150%);
 }
@@ -217,21 +200,12 @@ button {
   border-bottom: 1px solid var(--color-rule);
 }
 
-.wordmark,
-.site-nav,
-.button,
-.theme-toggle,
-.text-button,
-.project-note,
 h1,
-h2,
-h3,
 pre,
 code,
 textarea,
-.control,
 .glyph-rack,
-.ambiguity-list {
+.ambiguity-list dd {
   font-family: var(--font-mono);
 }
 
@@ -270,11 +244,7 @@ textarea,
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
-  gap: 3rem;
-  align-items: end;
-  padding-block: 4.75rem 3.5rem;
+  padding-block: 5.5rem 4rem;
 }
 
 .project-note {
@@ -295,18 +265,17 @@ h2,
 h3 {
   line-height: 1.05;
   font-weight: 700;
-  letter-spacing: 0;
   text-wrap: balance;
 }
 
-h1 {
-  max-width: 12ch;
-  margin-block-end: 1.25rem;
-  font-size: 5.25rem;
+#hero-title {
+  margin-block-end: 1.5rem;
+  font-size: 4rem;
+  letter-spacing: -0.35rem;
+  line-height: 0.9;
 }
 
 .hero-subtitle {
-  max-width: 32rem;
   margin-block-end: 1.65rem;
   color: var(--color-muted);
   font-size: 1.5rem;
@@ -314,8 +283,7 @@ h1 {
   text-wrap: pretty;
 }
 
-.hero-actions,
-.download-panel {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
@@ -374,33 +342,13 @@ h1 {
   border-color: var(--color-rule-strong);
 }
 
-.hero-proof {
-  display: grid;
-  gap: 0.4rem;
-  padding-block: 1.25rem;
-  border-block: 1px solid var(--color-rule-strong);
-  color: var(--color-ink);
-  font-family: var(--font-mono);
-  font-size: 1.45rem;
-  line-height: 1.45;
-  overflow-x: auto;
-}
-
-.hero-proof p {
-  margin: 0;
-  white-space: nowrap;
-}
-
 .section {
   padding-block: var(--section-space);
   border-top: 1px solid var(--color-rule);
 }
 
 .section-head {
-  display: grid;
-  grid-template-columns: minmax(12rem, 0.48fr) minmax(0, 1fr);
-  gap: 2rem;
-  align-items: baseline;
+  display: block;
   margin-block-end: 2rem;
 }
 
@@ -411,7 +359,7 @@ h1 {
 
 .section-head p {
   max-width: 46rem;
-  margin: 0;
+  margin: 0.75rem 0 0;
   color: var(--color-muted);
   font-size: 1.25rem;
   line-height: 1.5;
@@ -451,7 +399,7 @@ h1 {
   grid-template-columns: 1fr auto;
   gap: 0.45rem 0.75rem;
   color: var(--color-muted);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   line-height: 1.2;
 }
 
@@ -503,7 +451,6 @@ select {
 .specimen-note {
   margin: 0.75rem 0 0;
   color: var(--color-muted);
-  font-family: var(--font-mono);
   font-size: 0.82rem;
   line-height: 1.45;
 }
@@ -528,7 +475,6 @@ select {
   border-radius: var(--radius) var(--radius) 0 0;
   background: transparent;
   color: var(--color-muted);
-  font-family: var(--font-mono);
   font-size: 0.9rem;
 }
 
@@ -564,35 +510,29 @@ code {
 }
 
 .glyph-rack {
-  border-block: 1px solid var(--color-rule-strong);
+  border-block: 1px solid var(--color-rule);
 }
 
 .glyph-rack p {
   margin: 0;
   padding-block: 1rem;
-  border-top: 1px solid var(--color-rule);
   font-size: 1.8rem;
   line-height: 1.4;
   overflow-x: auto;
   white-space: nowrap;
 }
 
-.glyph-rack p:first-child {
-  border-top: 0;
-}
-
 .ambiguity-list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 1.5rem 0 0;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.35rem 1.6rem;
+  margin: 1.75rem 0 0;
   padding: 0;
-  border-top: 1px solid var(--color-rule);
 }
 
 .ambiguity-list div {
   min-width: 0;
-  padding: 1rem 1rem 1rem 0;
-  border-bottom: 1px solid var(--color-rule);
+  padding: 0;
 }
 
 .ambiguity-list dt {
@@ -604,9 +544,9 @@ code {
 
 .ambiguity-list dd {
   margin: 0;
-  font-size: 2.1rem;
-  line-height: 1.15;
-  white-space: nowrap;
+  font-size: 1.85rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .about-copy {
@@ -618,49 +558,6 @@ code {
 .about-copy p {
   margin: 0;
   text-wrap: pretty;
-}
-
-.usage-grid {
-  display: grid;
-  grid-template-columns: minmax(15rem, 0.5fr) minmax(0, 1fr);
-  gap: 2rem;
-  align-items: start;
-}
-
-.download-panel {
-  align-items: flex-start;
-}
-
-.download-panel p {
-  flex-basis: 100%;
-  margin: 0.4rem 0 0;
-  color: var(--color-muted);
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.snippet-panel {
-  border: 1px solid var(--color-rule-strong);
-  border-radius: var(--radius);
-}
-
-.snippet-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 3.25rem;
-  padding: 0.55rem 0.75rem 0.55rem 1rem;
-  border-bottom: 1px solid var(--color-rule);
-}
-
-.snippet-head h3 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.css-snippet {
-  background: var(--color-surface);
 }
 
 .site-footer {
@@ -676,6 +573,19 @@ code {
 
 .site-footer p {
   margin: 0;
+}
+
+.site-footer p:last-child {
+  justify-self: end;
+  max-width: 28rem;
+  text-align: right;
+}
+
+@media (max-width: 1100px) {
+  #hero-title {
+    font-size: 8.75rem;
+    letter-spacing: -0.4rem;
+  }
 }
 
 @media (max-width: 900px) {
@@ -701,8 +611,6 @@ code {
   }
 
   .hero,
-  .section-head,
-  .usage-grid,
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -712,9 +620,10 @@ code {
     padding-block-start: 3.25rem;
   }
 
-  h1 {
+  #hero-title {
     max-width: 12ch;
-    font-size: 4rem;
+    font-size: 6.5rem;
+    letter-spacing: -0.3rem;
   }
 
   .section-head h2 {
@@ -725,7 +634,6 @@ code {
     grid-template-columns: repeat(2, minmax(10rem, 1fr));
   }
 
-  .ambiguity-list,
   .about-copy {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -750,16 +658,14 @@ code {
     text-align: center;
   }
 
-  h1 {
-    font-size: 2.5rem;
+  #hero-title {
+    font-size: 3.2rem;
+    letter-spacing: -0.12rem;
+    line-height: 0.95;
   }
 
   .hero-subtitle {
     font-size: 1.25rem;
-  }
-
-  .hero-proof {
-    font-size: 1.2rem;
   }
 
   .section-head h2 {
@@ -771,7 +677,6 @@ code {
   }
 
   .specimen-controls,
-  .ambiguity-list,
   .about-copy {
     grid-template-columns: 1fr;
   }
@@ -790,9 +695,16 @@ code {
     font-size: 1.45rem;
   }
 
-  .snippet-head {
-    align-items: flex-start;
-    flex-direction: column;
+  .site-footer p:last-child {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 380px) {
+  #hero-title {
+    font-size: 2.85rem;
+    letter-spacing: -0.1rem;
   }
 }
 
