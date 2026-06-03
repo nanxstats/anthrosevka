@@ -3,6 +3,10 @@
 Anthrosevka Mono is an [Iosevka](https://github.com/be5invis/Iosevka)
 custom build inspired by the look and feel of Anthropic Mono.
 
+![Anthrosevka Mono in Ghostty. With Ghostty configuration `adjust-cell-height = 8`.](assets/screenshot-brew.png)
+
+![Anthrosevka Mono + btop.](assets/screenshot-btop.png)
+
 ## Prebuilt fonts
 
 Prebuilt fonts are available in the
