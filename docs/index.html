@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anthrosevka Mono is a custom Iosevka build inspired by Anthropic Mono.">
+  <title>Anthrosevka Mono</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Anthrosevka Mono home">
+      Anthrosevka Mono
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#specimen">Specimen</a>
+      <a href="#code">Code</a>
+      <a href="#download">Download</a>
+      <button class="theme-toggle" type="button" id="themeToggle">
+        <span id="themeLabel">Theme</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero page-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="project-note">Custom Iosevka build</p>
+        <h1 id="hero-title">Anthrosevka Mono</h1>
+        <p class="hero-subtitle">
+          A custom Iosevka build inspired by Anthropic Mono.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button button-primary" href="https://github.com/nanxstats/anthrosevka/releases/latest">
+            Download
+          </a>
+          <a class="button button-quiet" href="https://github.com/nanxstats/anthrosevka">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-proof" aria-label="Typeface proof">
+        <p>0O oO 1lI | []{}() &lt;&gt;</p>
+        <p>&lt;= &gt;= == != &lt;- -&gt; =&gt; :: :::</p>
+        <p>const width = glyph[0] ?? 1;</p>
+      </div>
+    </section>
+
+    <section class="section page-shell" id="specimen" aria-labelledby="specimen-title">
+      <div class="section-head">
+        <h2 id="specimen-title">Live Specimen</h2>
+        <p>
+          Edit the sample, adjust the texture, and check punctuation,
+          numerals, operators, and brackets at working sizes.
+        </p>
+      </div>
+
+      <div class="specimen-workbench" id="specimenWorkbench">
+        <form class="specimen-controls" aria-label="Specimen controls">
+          <label class="control">
+            <span>Size</span>
+            <output id="fontSizeOutput" for="fontSize">32px</output>
+            <input id="fontSize" name="fontSize" type="range" min="16" max="64" step="1" value="32">
+          </label>
+
+          <label class="control">
+            <span>Line height</span>
+            <output id="lineHeightOutput" for="lineHeight">1.45</output>
+            <input id="lineHeight" name="lineHeight" type="range" min="1.1" max="1.9" step="0.05" value="1.45">
+          </label>
+
+          <label class="control">
+            <span>Letter spacing</span>
+            <output id="letterSpacingOutput" for="letterSpacing">0.00em</output>
+            <input id="letterSpacing" name="letterSpacing" type="range" min="0" max="0.08" step="0.005" value="0">
+          </label>
+
+          <label class="control control-select">
+            <span>Specimen theme</span>
+            <select id="specimenTheme" name="specimenTheme">
+              <option value="auto">Follow page</option>
+              <option value="light">Light proof</option>
+              <option value="dark">Dark proof</option>
+            </select>
+          </label>
+
+          <button class="text-button" type="button" id="resetSpecimen">
+            Reset text
+          </button>
+        </form>
+
+        <label class="visually-hidden" for="liveSpecimen">Editable specimen text</label>
+        <textarea id="liveSpecimen" class="specimen-editor" spellcheck="false" aria-describedby="specimen-note">ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+0123456789 000 111 222 333 444 555
+.,:;'"` ~ ! ? / \ | _ - + = * ^ % # @ &
+[]{}() &lt;&gt; &lt;= &gt;= == != &lt;- -&gt; =&gt; :: ::: ?? ++ -- &amp;&amp; ||
+
+type GlyphRun = {
+  name: string;
+  codepoint: number;
+  width: 0 | 1 | 2;
+};
+
+const marks = ["0O", "oO", "1lI", "|I", "[]{}", "&lt;= &gt;= !="];
+
+for (const [index, mark] of marks.entries()) {
+  console.log(`${index.toString().padStart(2, "0")} | ${mark}`);
+}</textarea>
+        <p class="specimen-note" id="specimen-note">
+          Controls and edited text are saved in local storage for this browser.
+        </p>
+      </div>
+    </section>
+
+    <section class="section page-shell" id="code" aria-labelledby="code-title">
+      <div class="section-head">
+        <h2 id="code-title">Code Specimen</h2>
+        <p>
+          Snippets use compact columns, operators, comments, brackets, string
+          marks, and digits that are easy to compare across languages.
+        </p>
+      </div>
+
+      <div class="code-specimen">
+        <div class="tabs" role="tablist" aria-label="Code language">
+          <button id="tab-python" class="tab is-active" type="button" role="tab" aria-selected="true"
+            aria-controls="panel-python" data-language="python">
+            Python
+          </button>
+          <button id="tab-r" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-r"
+            data-language="r" tabindex="-1">
+            R
+          </button>
+          <button id="tab-javascript" class="tab" type="button" role="tab" aria-selected="false"
+            aria-controls="panel-javascript" data-language="javascript" tabindex="-1">
+            JavaScript
+          </button>
+          <button id="tab-shell" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-shell"
+            data-language="shell" tabindex="-1">
+            Shell
+          </button>
+        </div>
+
+        <div class="code-frame">
+          <pre id="panel-python" role="tabpanel" aria-labelledby="tab-python"><code># Inspect alignment, digits, and ambiguous glyphs.
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class GlyphRun:
+    name: str
+    width: int
+    marks: tuple[str, ...]
+
+rows = [
+    GlyphRun("zero", 1, ("0", "O", "o")),
+    GlyphRun("one",  1, ("1", "l", "I", "|")),
+    GlyphRun("ops",  1, ("&lt;=", "&gt;=", "==", "!=")),
+]
+
+for index, row in enumerate(rows, start=1):
+    print(f"{index:02d} | {row.name:&lt;6} | {row.width:&gt;2} | {row.marks!r}")</code></pre>
+
+          <pre id="panel-r" role="tabpanel" aria-labelledby="tab-r" hidden><code># Compact columns with readable punctuation.
+glyphs &lt;- data.frame(
+  name   = c("zero", "one", "pipe", "arrow"),
+  sample = c("0O oO", "1lI", "|I", "&lt;- -&gt; =&gt;"),
+  width  = c(1, 1, 1, 1),
+  score  = c(0.94, 0.91, 0.86, 0.89)
+)
+
+glyphs$clear &lt;- glyphs$score &gt;= 0.88 &amp; glyphs$width == 1
+glyphs[glyphs$clear, c("name", "sample", "score")]</code></pre>
+
+          <pre id="panel-javascript" role="tabpanel" aria-labelledby="tab-javascript" hidden><code>// Brackets, operators, template strings, and padded output.
+const ranges = [
+  { name: "ASCII", from: 0x20,   to: 0x7e },
+  { name: "Arrows", from: 0x2190, to: 0x21ff },
+  { name: "Math",  from: 0x2200, to: 0x22ff },
+];
+
+function cell(label, value) {
+  return `${label.padEnd(12)} :: ${String(value).padStart(4)}`;
+}
+
+for (const { name, from, to } of ranges) {
+  console.log(cell(name, to - from + 1));
+}</code></pre>
+
+          <pre id="panel-shell" role="tabpanel" aria-labelledby="tab-shell" hidden><code>#!/usr/bin/env sh
+set -eu
+
+font_dir="$HOME/Library/Fonts"
+release="AnthrosevkaMono-ttf-unhinted.zip"
+
+mkdir -p "$font_dir"
+cp build/*.ttf "$font_dir"/
+fc-match "Anthrosevka Mono" || true
+
+printf '%-18s %8s\n' "regular" "400"
+printf '%-18s %8s\n' "bold"    "700"
+printf '%-18s %8s\n' "release" "$release"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-shell" id="glyphs" aria-labelledby="glyphs-title">
+      <div class="section-head">
+        <h2 id="glyphs-title">Glyph Texture</h2>
+        <p>
+          Dense rows make small differences visible: counters, terminals,
+          pipes, brackets, arrows, and repeated digits.
+        </p>
+      </div>
+
+      <div class="glyph-rack" aria-label="Dense glyph rows">
+        <p>0O oO 1lI | []{}() &lt;&gt; &lt;= &gt;= == != &lt;- -&gt; =&gt; :: :::</p>
+        <p>0123456789 00 11 22 33 44 55 66 77 88 99 0x00 0xff 10.50</p>
+        <p>.,:;'"` ~ ! ? / \ | _ - + = * ^ % # @ &amp; $ § ¶ • · …</p>
+        <p>← → ↑ ↓ ↔ ↕ ⇐ ⇒ ⇔ ± × ÷ ≈ ≠ ≤ ≥ ∑ ∆ √ ∞ ∫ ∂ µ Ω</p>
+      </div>
+
+      <dl class="ambiguity-list">
+        <div>
+          <dt>zero / capital O / lowercase o</dt>
+          <dd>0 O o Ø</dd>
+        </div>
+        <div>
+          <dt>one / lowercase l / capital I / pipe</dt>
+          <dd>1 l I |</dd>
+        </div>
+        <div>
+          <dt>brackets and braces</dt>
+          <dd>[] {} () &lt;&gt;</dd>
+        </div>
+        <div>
+          <dt>comparison and arrows</dt>
+          <dd>&lt;= &gt;= == != &lt;- -&gt; =&gt;</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="section page-shell" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <h2 id="about-title">About</h2>
+        <p>
+          Origin and intent, kept brief.
+        </p>
+      </div>
+
+      <div class="about-copy">
+        <p>
+          Anthrosevka Mono is a custom build of
+          <a href="https://github.com/be5invis/Iosevka">Iosevka</a>, configured
+          for programming and terminal use. The build favors terminal spacing,
+          regular and bold weights, a 600 width default, and unhinted TTF files
+          for high-resolution displays.
+        </p>
+        <p>
+          Its visual direction is inspired by Anthropic Mono, with a narrow,
+          clear, calm texture for code. It is an independent third-party
+          project and does not imply endorsement, affiliation, or support from
+          Anthropic PBC.
+        </p>
+        <p>
+          The aim is pragmatic: readable columns, distinguishable punctuation,
+          stable symbols, and a tone that stays quiet during long coding
+          sessions.
+        </p>
+      </div>
+    </section>
+
+    <section class="section page-shell" id="download" aria-labelledby="download-title">
+      <div class="section-head">
+        <h2 id="download-title">Usage / Download</h2>
+        <p>
+          Prebuilt files are published through GitHub releases. Use the local
+          web font files directly when serving the specimen or a project page.
+        </p>
+      </div>
+
+      <div class="usage-grid">
+        <div class="download-panel">
+          <a class="button button-primary" href="https://github.com/nanxstats/anthrosevka/releases/latest">
+            Download ZIP
+          </a>
+          <a class="button button-quiet" href="https://github.com/nanxstats/anthrosevka/releases">
+            Browse releases
+          </a>
+          <p>
+            ZIP archive placeholder: use the latest asset attached to the
+            GitHub release for the current build.
+          </p>
+        </div>
+
+        <div class="snippet-panel" aria-labelledby="css-snippet-title">
+          <div class="snippet-head">
+            <h3 id="css-snippet-title">CSS</h3>
+            <button class="text-button" type="button" id="copyCss">
+              Copy CSS
+            </button>
+          </div>
+          <pre class="css-snippet"><code id="cssSnippet">@font-face {
+  font-family: "Anthrosevka Mono";
+  src: url("fonts/AnthrosevkaMono-Regular.woff2") format("woff2");
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-shell">
+    <p>
+      <a href="https://github.com/nanxstats/anthrosevka">GitHub source</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://github.com/nanxstats/anthrosevka/blob/main/LICENSE">SIL OFL 1.1</a>
+      <span aria-hidden="true">/</span>
+      Anthrosevka Mono is a custom build derived from Iosevka.
+    </p>
+    <p>
+      Independent third-party project. Not endorsed by, affiliated with, or
+      supported by Anthropic PBC.
+    </p>
+  </footer>
+</body>
+
+</html>
