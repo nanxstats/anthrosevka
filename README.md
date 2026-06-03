@@ -31,6 +31,11 @@ Next, copy `private-build-plans.toml` to the root of the Iosevka clone. Run
 npm run build -- ttf-unhinted::AnthrosevkaMono
 ```
 
+## Disclaimer
+
+Anthrosevka Mono is an independent third-party project **not** endorsed by,
+affiliated with, or supported by Anthropic.
+
 ## License
 
 Anthrosevka Mono is licensed under the [SIL Open Font License, Version 1.1](./LICENSE).
