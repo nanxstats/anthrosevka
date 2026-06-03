@@ -239,35 +239,163 @@ printf '%-18s %8s\n' "release" "$release"</code></pre>
       <div class="section-head">
         <h2 id="glyphs-title">Glyph Texture</h2>
         <p>
-          Dense rows make small differences visible: counters, terminals,
-          pipes, brackets, arrows, and repeated digits.
+          Inspect letterforms, numerals, ambiguous forms, operators, and
+          punctuation in a compact bordered grid.
         </p>
       </div>
 
-      <div class="glyph-rack" aria-label="Dense glyph rows">
-        <p>0123456789 00 11 22 33 44 55 66 77 88 99 0x00 0xff 10.50</p>
-        <p>.,:;'"` ~ ! ? / \ | _ - + = * ^ % # @ &amp; $ § ¶ • · …</p>
-        <p>← → ↑ ↓ ↔ ↕ ⇐ ⇒ ⇔ ± × ÷ ≈ ≠ ≤ ≥ ∑ ∆ √ ∞ ∫ ∂ µ Ω</p>
+      <div class="glyph-board" aria-label="Inspectable glyph grid">
+        <section class="glyph-group" aria-labelledby="glyph-group-numbers">
+          <h3 id="glyph-group-numbers">Numbers</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="0" data-label="zero">0</button>
+            <button class="glyph-cell" type="button" data-glyph="1" data-label="one">1</button>
+            <button class="glyph-cell" type="button" data-glyph="2" data-label="two">2</button>
+            <button class="glyph-cell" type="button" data-glyph="3" data-label="three">3</button>
+            <button class="glyph-cell" type="button" data-glyph="4" data-label="four">4</button>
+            <button class="glyph-cell" type="button" data-glyph="5" data-label="five">5</button>
+            <button class="glyph-cell" type="button" data-glyph="6" data-label="six">6</button>
+            <button class="glyph-cell" type="button" data-glyph="7" data-label="seven">7</button>
+            <button class="glyph-cell" type="button" data-glyph="8" data-label="eight">8</button>
+            <button class="glyph-cell" type="button" data-glyph="9" data-label="nine">9</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-uppercase">
+          <h3 id="glyph-group-uppercase">Uppercase</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="A" data-label="capital A">A</button>
+            <button class="glyph-cell" type="button" data-glyph="B" data-label="capital B">B</button>
+            <button class="glyph-cell" type="button" data-glyph="C" data-label="capital C">C</button>
+            <button class="glyph-cell" type="button" data-glyph="D" data-label="capital D">D</button>
+            <button class="glyph-cell" type="button" data-glyph="E" data-label="capital E">E</button>
+            <button class="glyph-cell" type="button" data-glyph="F" data-label="capital F">F</button>
+            <button class="glyph-cell" type="button" data-glyph="G" data-label="capital G">G</button>
+            <button class="glyph-cell" type="button" data-glyph="H" data-label="capital H">H</button>
+            <button class="glyph-cell" type="button" data-glyph="I" data-label="capital I">I</button>
+            <button class="glyph-cell" type="button" data-glyph="J" data-label="capital J">J</button>
+            <button class="glyph-cell" type="button" data-glyph="K" data-label="capital K">K</button>
+            <button class="glyph-cell" type="button" data-glyph="L" data-label="capital L">L</button>
+            <button class="glyph-cell" type="button" data-glyph="M" data-label="capital M">M</button>
+            <button class="glyph-cell" type="button" data-glyph="N" data-label="capital N">N</button>
+            <button class="glyph-cell" type="button" data-glyph="O" data-label="capital O">O</button>
+            <button class="glyph-cell" type="button" data-glyph="P" data-label="capital P">P</button>
+            <button class="glyph-cell" type="button" data-glyph="Q" data-label="capital Q">Q</button>
+            <button class="glyph-cell" type="button" data-glyph="R" data-label="capital R">R</button>
+            <button class="glyph-cell" type="button" data-glyph="S" data-label="capital S">S</button>
+            <button class="glyph-cell" type="button" data-glyph="T" data-label="capital T">T</button>
+            <button class="glyph-cell" type="button" data-glyph="U" data-label="capital U">U</button>
+            <button class="glyph-cell" type="button" data-glyph="V" data-label="capital V">V</button>
+            <button class="glyph-cell" type="button" data-glyph="W" data-label="capital W">W</button>
+            <button class="glyph-cell" type="button" data-glyph="X" data-label="capital X">X</button>
+            <button class="glyph-cell" type="button" data-glyph="Y" data-label="capital Y">Y</button>
+            <button class="glyph-cell" type="button" data-glyph="Z" data-label="capital Z">Z</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-lowercase">
+          <h3 id="glyph-group-lowercase">Lowercase</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="a" data-label="lowercase a">a</button>
+            <button class="glyph-cell" type="button" data-glyph="b" data-label="lowercase b">b</button>
+            <button class="glyph-cell" type="button" data-glyph="c" data-label="lowercase c">c</button>
+            <button class="glyph-cell" type="button" data-glyph="d" data-label="lowercase d">d</button>
+            <button class="glyph-cell" type="button" data-glyph="e" data-label="lowercase e">e</button>
+            <button class="glyph-cell" type="button" data-glyph="f" data-label="lowercase f">f</button>
+            <button class="glyph-cell" type="button" data-glyph="g" data-label="lowercase g">g</button>
+            <button class="glyph-cell" type="button" data-glyph="h" data-label="lowercase h">h</button>
+            <button class="glyph-cell" type="button" data-glyph="i" data-label="lowercase i">i</button>
+            <button class="glyph-cell" type="button" data-glyph="j" data-label="lowercase j">j</button>
+            <button class="glyph-cell" type="button" data-glyph="k" data-label="lowercase k">k</button>
+            <button class="glyph-cell" type="button" data-glyph="l" data-label="lowercase l">l</button>
+            <button class="glyph-cell" type="button" data-glyph="m" data-label="lowercase m">m</button>
+            <button class="glyph-cell" type="button" data-glyph="n" data-label="lowercase n">n</button>
+            <button class="glyph-cell" type="button" data-glyph="o" data-label="lowercase o">o</button>
+            <button class="glyph-cell" type="button" data-glyph="p" data-label="lowercase p">p</button>
+            <button class="glyph-cell" type="button" data-glyph="q" data-label="lowercase q">q</button>
+            <button class="glyph-cell" type="button" data-glyph="r" data-label="lowercase r">r</button>
+            <button class="glyph-cell" type="button" data-glyph="s" data-label="lowercase s">s</button>
+            <button class="glyph-cell" type="button" data-glyph="t" data-label="lowercase t">t</button>
+            <button class="glyph-cell" type="button" data-glyph="u" data-label="lowercase u">u</button>
+            <button class="glyph-cell" type="button" data-glyph="v" data-label="lowercase v">v</button>
+            <button class="glyph-cell" type="button" data-glyph="w" data-label="lowercase w">w</button>
+            <button class="glyph-cell" type="button" data-glyph="x" data-label="lowercase x">x</button>
+            <button class="glyph-cell" type="button" data-glyph="y" data-label="lowercase y">y</button>
+            <button class="glyph-cell" type="button" data-glyph="z" data-label="lowercase z">z</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-ambiguity">
+          <h3 id="glyph-group-ambiguity">Ambiguity</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="0" data-label="zero">0</button>
+            <button class="glyph-cell" type="button" data-glyph="O" data-label="capital O">O</button>
+            <button class="glyph-cell" type="button" data-glyph="o" data-label="lowercase o">o</button>
+            <button class="glyph-cell" type="button" data-glyph="1" data-label="one">1</button>
+            <button class="glyph-cell" type="button" data-glyph="l" data-label="lowercase l">l</button>
+            <button class="glyph-cell" type="button" data-glyph="I" data-label="capital I">I</button>
+            <button class="glyph-cell" type="button" data-glyph="|" data-label="pipe">|</button>
+            <button class="glyph-cell" type="button" data-glyph="5" data-label="five">5</button>
+            <button class="glyph-cell" type="button" data-glyph="S" data-label="capital S">S</button>
+            <button class="glyph-cell" type="button" data-glyph="s" data-label="lowercase s">s</button>
+            <button class="glyph-cell" type="button" data-glyph="2" data-label="two">2</button>
+            <button class="glyph-cell" type="button" data-glyph="Z" data-label="capital Z">Z</button>
+            <button class="glyph-cell" type="button" data-glyph="z" data-label="lowercase z">z</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-operators">
+          <h3 id="glyph-group-operators">Operators</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="&lt;=" data-label="less than or equal">&lt;=</button>
+            <button class="glyph-cell" type="button" data-glyph="&gt;="
+              data-label="greater than or equal">&gt;=</button>
+            <button class="glyph-cell" type="button" data-glyph="==" data-label="equality">==</button>
+            <button class="glyph-cell" type="button" data-glyph="!=" data-label="not equal">!=</button>
+            <button class="glyph-cell" type="button" data-glyph="&lt;-" data-label="left arrow operator">&lt;-</button>
+            <button class="glyph-cell" type="button" data-glyph="-&gt;" data-label="right arrow operator">-&gt;</button>
+            <button class="glyph-cell" type="button" data-glyph="=&gt;" data-label="fat arrow operator">=&gt;</button>
+            <button class="glyph-cell" type="button" data-glyph="::" data-label="double colon">::</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-brackets">
+          <h3 id="glyph-group-brackets">Brackets</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="[" data-label="left square bracket">[</button>
+            <button class="glyph-cell" type="button" data-glyph="]" data-label="right square bracket">]</button>
+            <button class="glyph-cell" type="button" data-glyph="{" data-label="left brace">{</button>
+            <button class="glyph-cell" type="button" data-glyph="}" data-label="right brace">}</button>
+            <button class="glyph-cell" type="button" data-glyph="(" data-label="left parenthesis">(</button>
+            <button class="glyph-cell" type="button" data-glyph=")" data-label="right parenthesis">)</button>
+            <button class="glyph-cell" type="button" data-glyph="&lt;" data-label="less than">&lt;</button>
+            <button class="glyph-cell" type="button" data-glyph="&gt;" data-label="greater than">&gt;</button>
+          </div>
+        </section>
+
+        <section class="glyph-group" aria-labelledby="glyph-group-symbols">
+          <h3 id="glyph-group-symbols">Symbols</h3>
+          <div class="glyph-grid">
+            <button class="glyph-cell" type="button" data-glyph="." data-label="period">.</button>
+            <button class="glyph-cell" type="button" data-glyph="," data-label="comma">,</button>
+            <button class="glyph-cell" type="button" data-glyph=":" data-label="colon">:</button>
+            <button class="glyph-cell" type="button" data-glyph=";" data-label="semicolon">;</button>
+            <button class="glyph-cell" type="button" data-glyph="'" data-label="apostrophe">'</button>
+            <button class="glyph-cell" type="button" data-glyph="&quot;" data-label="quotation mark">&quot;</button>
+            <button class="glyph-cell" type="button" data-glyph="`" data-label="backtick">`</button>
+            <button class="glyph-cell" type="button" data-glyph="~" data-label="tilde">~</button>
+            <button class="glyph-cell" type="button" data-glyph="#" data-label="hash">#</button>
+            <button class="glyph-cell" type="button" data-glyph="@" data-label="at sign">@</button>
+            <button class="glyph-cell" type="button" data-glyph="&amp;" data-label="ampersand">&amp;</button>
+            <button class="glyph-cell" type="button" data-glyph="%" data-label="percent">%</button>
+          </div>
+        </section>
       </div>
 
-      <dl class="ambiguity-list">
-        <div>
-          <dt>zero / capital O / lowercase o</dt>
-          <dd>0 O o Ø</dd>
-        </div>
-        <div>
-          <dt>one / lowercase l / capital I / pipe</dt>
-          <dd>1 l I |</dd>
-        </div>
-        <div>
-          <dt>brackets and braces</dt>
-          <dd>[] {} () &lt;&gt;</dd>
-        </div>
-        <div>
-          <dt>comparison and arrows</dt>
-          <dd>&lt;= &gt;= == != &lt;- -&gt; =&gt;</dd>
-        </div>
-      </dl>
+      <div class="glyph-popover" id="glyphPopover" aria-hidden="true">
+        <div class="glyph-popover-character" id="glyphPopoverCharacter"></div>
+        <div class="glyph-popover-label" id="glyphPopoverLabel"></div>
+      </div>
     </section>
 
     <section class="section page-shell" id="about" aria-labelledby="about-title">

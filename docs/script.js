@@ -200,4 +200,88 @@
     activateTab(savedTab);
   }
 
+  const glyphCells = Array.from(document.querySelectorAll(".glyph-cell"));
+  const glyphPopover = document.getElementById("glyphPopover");
+  const glyphPopoverCharacter = document.getElementById("glyphPopoverCharacter");
+  const glyphPopoverLabel = document.getElementById("glyphPopoverLabel");
+  let inspectedGlyph = null;
+
+  function glyphPointFromCell(cell) {
+    const rect = cell.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top,
+    };
+  }
+
+  function positionGlyphPopover(point) {
+    const margin = 14;
+    const rect = glyphPopover.getBoundingClientRect();
+    const halfWidth = rect.width / 2;
+    const maxX = window.innerWidth - halfWidth - margin;
+    const minX = halfWidth + margin;
+    const x = Math.min(maxX, Math.max(minX, point.x));
+    const needsBelow = point.y < rect.height + margin * 2;
+    const y = needsBelow
+      ? Math.min(window.innerHeight - rect.height - margin, point.y)
+      : Math.max(rect.height + margin * 2, point.y);
+
+    glyphPopover.classList.toggle("is-below", needsBelow);
+    glyphPopover.style.left = `${x}px`;
+    glyphPopover.style.top = `${y}px`;
+  }
+
+  function inspectGlyph(cell, point) {
+    const glyph = cell.dataset.glyph || cell.textContent.trim();
+    const label = cell.dataset.label || "glyph";
+
+    if (inspectedGlyph && inspectedGlyph !== cell) {
+      inspectedGlyph.classList.remove("is-inspected");
+    }
+
+    inspectedGlyph = cell;
+    cell.classList.add("is-inspected");
+    glyphPopoverCharacter.textContent = glyph;
+    glyphPopoverLabel.textContent = label;
+    glyphPopover.classList.add("is-visible");
+    glyphPopover.setAttribute("aria-hidden", "false");
+    positionGlyphPopover(point || glyphPointFromCell(cell));
+  }
+
+  function hideGlyphInspector() {
+    if (inspectedGlyph) {
+      inspectedGlyph.classList.remove("is-inspected");
+    }
+    inspectedGlyph = null;
+    glyphPopover.classList.remove("is-visible", "is-below");
+    glyphPopover.setAttribute("aria-hidden", "true");
+  }
+
+  if (glyphPopover && glyphPopoverCharacter && glyphPopoverLabel) {
+    glyphCells.forEach((cell) => {
+      const glyph = cell.dataset.glyph || cell.textContent.trim();
+      const label = cell.dataset.label || "glyph";
+      cell.setAttribute("aria-label", `Inspect ${label}: ${glyph}`);
+
+      cell.addEventListener("mouseenter", (event) => {
+        inspectGlyph(cell, { x: event.clientX, y: event.clientY });
+      });
+
+      cell.addEventListener("mousemove", (event) => {
+        if (inspectedGlyph === cell) {
+          positionGlyphPopover({ x: event.clientX, y: event.clientY });
+        }
+      });
+
+      cell.addEventListener("mouseleave", hideGlyphInspector);
+      cell.addEventListener("focus", () => inspectGlyph(cell));
+      cell.addEventListener("blur", hideGlyphInspector);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        hideGlyphInspector();
+      }
+    });
+  }
 })();
