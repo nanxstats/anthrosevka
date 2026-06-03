@@ -34,7 +34,7 @@ npm run build -- ttf-unhinted::AnthrosevkaMono
 ## Disclaimer
 
 Anthrosevka Mono is an independent third-party project **not** endorsed by,
-affiliated with, or supported by Anthropic.
+affiliated with, or supported by Anthropic PBC.
 
 ## License
 
