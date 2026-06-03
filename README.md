@@ -22,8 +22,7 @@ The idea is to ship sensible, opinionated defaults for a better experience out o
 
 ## Build from source
 
-Follow [building Iosevka from source
-](https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md)
+Follow [building Iosevka from source](https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md)
 to set up the build environment.
 
 Next, copy `private-build-plans.toml` to the root of the Iosevka clone. Run
