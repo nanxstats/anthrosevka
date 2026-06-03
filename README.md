@@ -5,8 +5,10 @@ custom build inspired by the look and feel of Anthropic Mono.
 
 ## Prebuilt fonts
 
-The default TTF build is under `fonts/`. The idea is to ship sensible,
-opinionated defaults for a better experience out of the box:
+Prebuilt fonts are available in the
+[GitHub releases](https://github.com/nanxstats/anthrosevka/releases).
+
+The idea is to ship sensible, opinionated defaults for a better experience out of the box:
 
 - Set spacing to "terminal". This forces special symbols such as arrows to fit
   a strict, narrow one-column layout and fixes rendering issues in terminals.
