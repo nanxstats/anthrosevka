@@ -20,7 +20,8 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="#specimen">Specimen</a>
       <a href="#code">Code</a>
-      <a href="#download">Download</a>
+      <a href="#glyphs">Glyphs</a>
+      <a href="#about">About</a>
       <button class="theme-toggle" type="button" id="themeToggle">
         <span id="themeLabel">Theme</span>
       </button>
@@ -43,12 +44,6 @@
             View on GitHub
           </a>
         </div>
-      </div>
-
-      <div class="hero-proof" aria-label="Typeface proof">
-        <p>0O oO 1lI | []{}() &lt;&gt;</p>
-        <p>&lt;= &gt;= == != &lt;- -&gt; =&gt; :: :::</p>
-        <p>const width = glyph[0] ?? 1;</p>
       </div>
     </section>
 
@@ -138,9 +133,13 @@ for (const [index, mark] of marks.entries()) {
             data-language="r" tabindex="-1">
             R
           </button>
-          <button id="tab-javascript" class="tab" type="button" role="tab" aria-selected="false"
-            aria-controls="panel-javascript" data-language="javascript" tabindex="-1">
-            JavaScript
+          <button id="tab-typescript" class="tab" type="button" role="tab" aria-selected="false"
+            aria-controls="panel-typescript" data-language="typescript" tabindex="-1">
+            TypeScript
+          </button>
+          <button id="tab-rust" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-rust"
+            data-language="rust" tabindex="-1">
+            Rust
           </button>
           <button id="tab-shell" class="tab" type="button" role="tab" aria-selected="false" aria-controls="panel-shell"
             data-language="shell" tabindex="-1">
@@ -178,19 +177,45 @@ glyphs &lt;- data.frame(
 glyphs$clear &lt;- glyphs$score &gt;= 0.88 &amp; glyphs$width == 1
 glyphs[glyphs$clear, c("name", "sample", "score")]</code></pre>
 
-          <pre id="panel-javascript" role="tabpanel" aria-labelledby="tab-javascript" hidden><code>// Brackets, operators, template strings, and padded output.
-const ranges = [
-  { name: "ASCII", from: 0x20,   to: 0x7e },
-  { name: "Arrows", from: 0x2190, to: 0x21ff },
-  { name: "Math",  from: 0x2200, to: 0x22ff },
+          <pre id="panel-typescript" role="tabpanel" aria-labelledby="tab-typescript" hidden><code>// Types, brackets, template strings, and padded output.
+type GlyphRange = {
+  name: "ASCII" | "Arrows" | "Math";
+  from: number;
+  to: number;
+  marks?: readonly string[];
+};
+
+const ranges: readonly GlyphRange[] = [
+  { name: "ASCII",  from: 0x20,   to: 0x7e,   marks: ["0O", "1lI"] },
+  { name: "Arrows", from: 0x2190, to: 0x21ff, marks: ["&lt;-", "-&gt;", "=&gt;"] },
+  { name: "Math",   from: 0x2200, to: 0x22ff },
 ];
 
-function cell(label, value) {
-  return `${label.padEnd(12)} :: ${String(value).padStart(4)}`;
+function cell(label: string, value: number): string {
+  return `${label.padEnd(12)} :: ${String(value).padStart(4, "0")}`;
 }
 
 for (const { name, from, to } of ranges) {
-  console.log(cell(name, to - from + 1));
+  const total = to - from + 1;
+  console.log(cell(name, total));
+}</code></pre>
+
+          <pre id="panel-rust" role="tabpanel" aria-labelledby="tab-rust" hidden><code>// Lifetimes, references, ranges, padding, and aligned output.
+#[derive(Debug)]
+struct GlyphRun&lt;'a&gt; {
+    name:  &amp;'a str,
+    width: u8,
+    marks: &amp;'a [&amp;'a str],
+}
+
+let rows = [
+    GlyphRun { name: "zero", width: 1, marks: &amp;["0", "O", "o"] },
+    GlyphRun { name: "one",  width: 1, marks: &amp;["1", "l", "I", "|"] },
+    GlyphRun { name: "ops",  width: 1, marks: &amp;["&lt;=", "&gt;=", "==", "!="] },
+];
+
+for (index, row) in rows.iter().enumerate() {
+    println!("{:02} | {:&lt;6} | {:&gt;2} | {:?}", index + 1, row.name, row.width, row.marks);
 }</code></pre>
 
           <pre id="panel-shell" role="tabpanel" aria-labelledby="tab-shell" hidden><code>#!/usr/bin/env sh
@@ -220,7 +245,6 @@ printf '%-18s %8s\n' "release" "$release"</code></pre>
       </div>
 
       <div class="glyph-rack" aria-label="Dense glyph rows">
-        <p>0O oO 1lI | []{}() &lt;&gt; &lt;= &gt;= == != &lt;- -&gt; =&gt; :: :::</p>
         <p>0123456789 00 11 22 33 44 55 66 77 88 99 0x00 0xff 10.50</p>
         <p>.,:;'"` ~ ! ? / \ | _ - + = * ^ % # @ &amp; $ § ¶ • · …</p>
         <p>← → ↑ ↓ ↔ ↕ ⇐ ⇒ ⇔ ± × ÷ ≈ ≠ ≤ ≥ ∑ ∆ √ ∞ ∫ ∂ µ Ω</p>
@@ -263,54 +287,14 @@ printf '%-18s %8s\n' "release" "$release"</code></pre>
           for high-resolution displays.
         </p>
         <p>
-          Its visual direction is inspired by Anthropic Mono, with a narrow,
-          clear, calm texture for code. It is an independent third-party
-          project and does not imply endorsement, affiliation, or support from
-          Anthropic PBC.
+          Its visual direction is inspired by Anthropic Mono, with a
+          clear, calm texture for code.
         </p>
         <p>
           The aim is pragmatic: readable columns, distinguishable punctuation,
           stable symbols, and a tone that stays quiet during long coding
           sessions.
         </p>
-      </div>
-    </section>
-
-    <section class="section page-shell" id="download" aria-labelledby="download-title">
-      <div class="section-head">
-        <h2 id="download-title">Usage / Download</h2>
-        <p>
-          Prebuilt files are published through GitHub releases. Use the local
-          web font files directly when serving the specimen or a project page.
-        </p>
-      </div>
-
-      <div class="usage-grid">
-        <div class="download-panel">
-          <a class="button button-primary" href="https://github.com/nanxstats/anthrosevka/releases/latest">
-            Download ZIP
-          </a>
-          <a class="button button-quiet" href="https://github.com/nanxstats/anthrosevka/releases">
-            Browse releases
-          </a>
-          <p>
-            ZIP archive placeholder: use the latest asset attached to the
-            GitHub release for the current build.
-          </p>
-        </div>
-
-        <div class="snippet-panel" aria-labelledby="css-snippet-title">
-          <div class="snippet-head">
-            <h3 id="css-snippet-title">CSS</h3>
-            <button class="text-button" type="button" id="copyCss">
-              Copy CSS
-            </button>
-          </div>
-          <pre class="css-snippet"><code id="cssSnippet">@font-face {
-  font-family: "Anthrosevka Mono";
-  src: url("fonts/AnthrosevkaMono-Regular.woff2") format("woff2");
-}</code></pre>
-        </div>
       </div>
     </section>
   </main>
