@@ -25,11 +25,23 @@ The idea is to ship sensible, opinionated defaults for a better experience out o
 Follow [building Iosevka from source](https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md)
 to set up the build environment.
 
-Next, copy `private-build-plans.toml` to the root of the Iosevka clone. Run
-
 ```bash
+git clone https://github.com/be5invis/Iosevka.git --depth 1
+git clone https://github.com/nanxstats/anthrosevka.git
+
+cd anthrosevka/
+
+IOSEVKA_DIR=/path/to/Iosevka
+
+./patches/apply-patches.sh "$IOSEVKA_DIR"
+cp private-build-plans.toml "$IOSEVKA_DIR/private-build-plans.toml"
+
+cd "$IOSEVKA_DIR"
+npm install
 npm run build -- ttf-unhinted::AnthrosevkaMono
 ```
+
+The built fonts will be in `$IOSEVKA_DIR/dist/AnthrosevkaMono/TTF-Unhinted/`.
 
 ## Disclaimer
 
