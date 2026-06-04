@@ -1,0 +1,20 @@
+diff --git a/packages/font-glyphs/src/letter/latin/upper-j.ptl b/packages/font-glyphs/src/letter/latin/upper-j.ptl
+index 8bc0ec2..2c335fa 100644
+--- a/packages/font-glyphs/src/letter/latin/upper-j.ptl
++++ b/packages/font-glyphs/src/letter/latin/upper-j.ptl
+@@ -25,6 +25,7 @@ glyph-block Letter-Latin-Upper-J : begin
+ 
+ 		local sw : Math.min Stroke : 0.4 * (xBarRight - df.leftSB)
+ 		local hookx : 0.75 * df.leftSB
++		local tailRise : mix 0 top 0.21
+ 
+ 		include : dispiro
+ 			widths.rhs sw
+@@ -32,6 +33,7 @@ glyph-block Letter-Latin-Upper-J : begin
+ 			curl xBarRight ArchDepthB
+ 			HookEnd 0 (sw -- sw)
+ 			g4 hookx Hook
++			straight.up.end hookx (tailRise + Hook) [widths.rhs.heading sw Upward]
+ 
+ 	define [JFlatHookBase df dfHook top] : glyph-proc
+ 		set-width df.width
