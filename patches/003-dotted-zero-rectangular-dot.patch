@@ -1,0 +1,25 @@
+diff --git a/packages/font-glyphs/src/number/0.ptl b/packages/font-glyphs/src/number/0.ptl
+index 7b46d70..ebc45be 100644
+--- a/packages/font-glyphs/src/number/0.ptl
++++ b/packages/font-glyphs/src/number/0.ptl
+@@ -98,15 +98,13 @@ glyph-block Digits-Zero : begin
+ 			MaskBelow (top * (1/2 + 1/16))
+ 
+ 	define [ZeroDotShape top] : begin
+-		local halfDotWidth : Math.max (DotRadius / 8) : Math.min DotRadius (CircleInnerWidth / 4)
+-		return : OShapeOutline.NoOvershoot
+-			top / 2 + DotRadius
+-			top / 2 - DotRadius
++		local halfDotWidth : Math.max (DotRadius / 8) : Math.min (DotRadius * 0.65) (CircleInnerWidth / 4)
++		local halfDotHeight : DotRadius * 1.2
++		return : Rect
++			top / 2 + halfDotHeight
++			top / 2 - halfDotHeight
+ 			Middle - halfDotWidth
+ 			Middle + halfDotWidth
+-			Stroke * halfDotWidth * 2 / Width
+-			ArchDepthAOf halfDotWidth (halfDotWidth * 2)
+-			ArchDepthBOf halfDotWidth (halfDotWidth * 2)
+ 
+ 	define [ZeroLongDotShape top] : begin
+ 		local halfDotWidth : Math.max (DotRadius / 8) : Math.min HalfStroke (CircleInnerWidth / 4)

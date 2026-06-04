@@ -1,5 +1,22 @@
 # Changelog
 
+## Anthrosevka Mono 0.2.0
+
+### Glyph design
+
+- Adjusted the uppercase `J` serifless hook with a higher, more balanced tail
+  inspired by Anthropic Mono while preserving full glyph height.
+- Refined the uppercase `Q` straight tail so its terminal extends farther right,
+  closer to the right stem.
+- Changed dotted zero from a circular dot to a rectangular dot, matching the
+  Anthropic Mono style dotted zero.
+
+### Maintenance
+
+- Added reusable patch files for the `J`, `Q`, and dotted zero glyph changes.
+- Added `patches/apply-patches.sh` to reapply the glyph patches after
+  refreshing the upstream Iosevka source tree.
+
 ## Anthrosevka Mono 0.1.0
 
 First release of Anthrosevka Mono, an Iosevka custom build inspired by the
