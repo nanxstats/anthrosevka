@@ -370,6 +370,11 @@ h3 {
   --spec-bg: var(--color-bg);
   --spec-ink: var(--color-ink);
   --spec-rule: var(--color-rule-strong);
+
+  padding: 1rem;
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--color-surface) 84%, var(--color-bg));
 }
 
 .specimen-workbench[data-specimen-theme="light"] {
