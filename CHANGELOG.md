@@ -1,5 +1,12 @@
 # Changelog
 
+## Anthrosevka Mono 0.3.0
+
+### Glyph design
+
+- Reworked the `1` base variant flag so its terminal aligns with the bottom
+  base and uses a straight vertical end similar to Anthropic Mono.
+
 ## Anthrosevka Mono 0.2.0
 
 ### Glyph design
