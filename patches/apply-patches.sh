@@ -14,6 +14,7 @@ patches='
 001-capital-q-straight-tail.patch
 002-capital-j-raised-tail.patch
 003-dotted-zero-rectangular-dot.patch
+004-number-one-vertical-flag.patch
 '
 
 for patch_name in $patches; do

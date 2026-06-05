@@ -1,0 +1,24 @@
+diff --git a/packages/font-glyphs/src/number/1.ptl b/packages/font-glyphs/src/number/1.ptl
+index a857268..f69e8cb 100644
+--- a/packages/font-glyphs/src/number/1.ptl
++++ b/packages/font-glyphs/src/number/1.ptl
+@@ -15,10 +15,16 @@ glyph-block Digits-One : begin
+ 
+ 		export : define [Serifed top balance pTopSerif] : glyph-proc
+ 			define topSW : AdviceStroke 3.5
++			local flagDepth : topSW + Stroke / 3
++			local xStemLeft : Middle - [HSwToV HalfStroke] + balance
++			local xTerminal : Middle - LongJut + TanSlope * (Stroke * DesignParameters.serifShiftX)
++			local yTerminalTop : top - Stroke / 8 - Hook * pTopSerif * (top / CAP)
+ 			include : VBar.m (Middle + balance) 0 top
+-			include : dispiro
+-				flat (Middle - [HSwToV HalfStroke] + balance) top [widths.lhs topSW]
+-				curl (Middle - [HSwToV : Stroke / 8] - HookX * 1.25 + balance) (top - Stroke / 8 - Hook * pTopSerif * (top / CAP))
++			include : spiro-outline
++				corner xStemLeft top
++				corner xTerminal yTerminalTop
++				corner xTerminal (yTerminalTop - flagDepth)
++				corner xStemLeft (top - flagDepth)
+ 
+ 		export : define [FlatSerifed top balance pTopSerif] : glyph-proc
+ 			define topSW : AdviceStroke 3.5
