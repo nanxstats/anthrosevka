@@ -7,6 +7,14 @@ custom build inspired by the look and feel of Anthropic Mono.
 
 ![Anthrosevka Mono + btop.](assets/screenshot-btop.png)
 
+## Installation
+
+Install with Homebrew:
+
+```bash
+brew install --cask nanxstats/tap/font-anthrosevka-mono
+```
+
 ## Prebuilt fonts
 
 Prebuilt fonts are available in the
