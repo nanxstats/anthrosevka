@@ -1,5 +1,11 @@
 # Changelog
 
+## Anthrosevka Mono 0.3.1
+
+### Maintenance
+
+- Rebuild fonts with Iosevka v34.8.1.
+
 ## Anthrosevka Mono 0.3.0
 
 ### Glyph design
