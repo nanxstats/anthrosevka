@@ -1,6 +1,21 @@
 # Changelog
 
-## Anthrosevka Mono (development version)
+## Anthrosevka Mono 0.4.0
+
+### Glyph design
+
+- Replaced curved tails on square commas, semicolons, and typographic quotes
+  with straight, parallel tails inspired by Geist Mono's Franklin Gothic style.
+  ASCII quotes retain their straight bar shapes (#28).
+- Shortened the double-storey `a` head's leftward reach and gave the upper
+  bowl stroke a smooth rise toward the stem (#28).
+- Angled the double-storey `g` ear upward, made the upper loop rounder,
+  and slightly compacted the lower loop (#28).
+
+### Documentation
+
+- Documented all patches, their selected variants, and build review guidance in
+  `patches/README.md` (#28).
 
 ### Supported weights
 
