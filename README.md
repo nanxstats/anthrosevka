@@ -24,8 +24,8 @@ The idea is to ship sensible, opinionated defaults for a better experience out o
 
 - Set spacing to "terminal". This forces special symbols such as arrows to fit
   a strict, narrow one-column layout and fixes rendering issues in terminals.
-- Weights 400 and 700 as the defaults.
 - Width 600 as the default; no condensed version.
+- Weights 100 to 900.
 - Unhinted TTF, because you deserve to use a high-resolution display.
 
 ## Build from source

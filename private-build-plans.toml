@@ -96,15 +96,50 @@ lig-plus-chain = "without-notch"
 lig-double-arrow-bar = "without-notch"
 lig-single-arrow-bar = "without-notch"
 
+[buildPlans.AnthrosevkaMono.weights.Thin]
+shape = 100
+menu = 100
+css = 100
+
+[buildPlans.AnthrosevkaMono.weights.ExtraLight]
+shape = 200
+menu = 200
+css = 200
+
+[buildPlans.AnthrosevkaMono.weights.Light]
+shape = 300
+menu = 300
+css = 300
+
 [buildPlans.AnthrosevkaMono.weights.Regular]
 shape = 400
 menu = 400
 css = 400
 
+[buildPlans.AnthrosevkaMono.weights.Medium]
+shape = 500
+menu = 500
+css = 500
+
+[buildPlans.AnthrosevkaMono.weights.SemiBold]
+shape = 600
+menu = 600
+css = 600
+
 [buildPlans.AnthrosevkaMono.weights.Bold]
 shape = 700
 menu = 700
 css = 700
+
+[buildPlans.AnthrosevkaMono.weights.ExtraBold]
+shape = 800
+menu = 800
+css = 800
+
+[buildPlans.AnthrosevkaMono.weights.Heavy]
+shape = 900
+menu = 900
+css = 900
 
 [buildPlans.AnthrosevkaMono.widths.Normal]
 shape = 600

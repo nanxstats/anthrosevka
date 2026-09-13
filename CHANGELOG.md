@@ -1,5 +1,12 @@
 # Changelog
 
+## Anthrosevka Mono (development version)
+
+### Supported weights
+
+- Besides font weights 400 and 700, add weights 100, 200, 300, 500, 600, 800,
+  and 900 that Iosevka natively supports to the custom build plan.
+
 ## Anthrosevka Mono 0.3.1
 
 ### Maintenance
