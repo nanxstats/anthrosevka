@@ -1,0 +1,53 @@
+diff --git a/packages/font-glyphs/src/letter/latin/lower-g.ptl b/packages/font-glyphs/src/letter/latin/lower-g.ptl
+index c7122de..3a37aa1 100644
+--- a/packages/font-glyphs/src/letter/latin/lower-g.ptl
++++ b/packages/font-glyphs/src/letter/latin/lower-g.ptl
+@@ -26,13 +26,16 @@ glyph-block Letter-Latin-Lower-G : begin
+ 
+ 	create-glyph 'g.doubleStoreyClosed' : glyph-proc
+ 		include : MarkSet.p
+-		local obot : [mix 0 XH DesignParameters.gBarPos] - Stroke * 0.4
+-		include : OShape XH (obot - O) SB [mix Width RightSB 1.3]
++		local obot : [mix 0 XH DesignParameters.gBarPos] - Stroke * 0.4 - XH * 0.025
++		local upperLeft : mix SB RightSB 0.04
++		local upperRight : mix Width RightSB 1.6
++		include : OShape XH (obot - O) upperLeft upperRight
++		local gbot : mix Descender 0 0.1
+ 
+ 		local fine    : Stroke * CThin
+ 		local gleftx  : [mix 0 SB 0.85] + OX
+ 		local grightx : [mix Width RightSB 0.825] - OX
+-		local groundy : Math.round : [mix Descender [mix 0 XH DesignParameters.gBarPos] 0.64] + HalfStroke
++		local groundy : Math.round : [mix gbot [mix 0 XH DesignParameters.gBarPos] 0.64] + HalfStroke
+ 		local gtipy   : [mix groundy (obot + Stroke) 1.005] - fine
+ 		include : dispiro
+ 			g4.left.start [mix SB RightSB 0.4] gtipy [widths.rhs fine]
+@@ -40,19 +43,20 @@ glyph-block Letter-Latin-Lower-G : begin
+ 			flat [mix SB RightSB 0.435] groundy [widths.rhs Stroke]
+ 			curl [mix SB RightSB 0.565] groundy
+ 			archv 4
+-			g4 grightx [mix (Descender + O) [YSmoothMidR groundy (Descender + O) SmallArchDepthA SmallArchDepthB] 1.06]
+-			Arch.rhs Descender
+-			g4 gleftx  [mix (Descender + O) [YSmoothMidL groundy (Descender + O) SmallArchDepthA SmallArchDepthB] 1.06]
++			g4 grightx [mix (gbot + O) [YSmoothMidR groundy (gbot + O) SmallArchDepthA SmallArchDepthB] 1.06]
++			Arch.rhs gbot
++			g4 gleftx  [mix (gbot + O) [YSmoothMidL groundy (gbot + O) SmallArchDepthA SmallArchDepthB] 1.06]
+ 			arcvh
+ 			g4 [mix SB RightSB 0.435] groundy [heading Rightward]
+-		local gm : mix SB [mix Width RightSB 1.3] 0.5
++		local gm : mix upperLeft upperRight 0.5
++		local earRise : XH * 0.06
+ 		include : spiro-outline
+-			corner ([mix Width RightSB 0.75] - OX)  XH
+-			corner ([mix Width RightSB 0.75] - OX) (XH - Stroke)
++			corner ([mix Width RightSB 0.75] - OX) (XH + earRise)
++			corner ([mix Width RightSB 0.75] - OX) (XH + earRise - Stroke)
+ 			corner gm (XH - Stroke - O)
+-			corner gm  XH
++			corner gm XH
+ 
+-		set-base-anchor 'overlay' Middle [mix (Descender + O) groundy 0.5]
++		set-base-anchor 'overlay' Middle [mix (gbot + O) groundy 0.5]
+ 		set-base-anchor 'strike'  Middle [mix (obot      - O) XH      0.5]
+ 
+ 	derive-composites "gStroke.doubleStoreyClosed" null "g.doubleStoreyClosed" [OverlayW obwDoubleStorey]

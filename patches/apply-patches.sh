@@ -15,6 +15,9 @@ patches='
 002-capital-j-raised-tail.patch
 003-dotted-zero-rectangular-dot.patch
 004-number-one-vertical-flag.patch
+005-punctuation-straight-tails.patch
+006-lowercase-a-balance.patch
+007-lowercase-g-loop-and-ear.patch
 '
 
 for patch_name in $patches; do
