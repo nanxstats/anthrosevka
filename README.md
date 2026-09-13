@@ -51,6 +51,9 @@ npm run build -- ttf-unhinted::AnthrosevkaMono
 
 The built fonts will be in `$IOSEVKA_DIR/dist/AnthrosevkaMono/TTF-Unhinted/`.
 
+See the [patch notes](patches/README.md) for the selected glyph variants and
+source level design adjustments.
+
 ## Disclaimer
 
 Anthrosevka Mono is an independent third-party project **not** endorsed by,

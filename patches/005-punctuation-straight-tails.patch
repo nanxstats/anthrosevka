@@ -1,0 +1,38 @@
+diff --git a/packages/font-glyphs/src/symbol/punctuation/small.ptl b/packages/font-glyphs/src/symbol/punctuation/small.ptl
+index 4497139..8ea8047 100644
+--- a/packages/font-glyphs/src/symbol/punctuation/small.ptl
++++ b/packages/font-glyphs/src/symbol/punctuation/small.ptl
+@@ -76,11 +76,11 @@ glyph-block Symbol-Punctuation-Small : begin
+ 		export : define [square cx cy] : with-transform [Translate cx cy] : glyph-proc
+ 			include : union
+ 				SquareAt 0 r r
+-				dispiro
+-					flat r r [widths.rhs sw]
+-					curl r 0 [widths.rhs sw]
+-					quadControls (0 + TanSlope / 2) (0.5 - TanSlope * (r / Descender)) 12
+-					g4 ([mix 0 Descender TanSlope] - commaOverflow) Descender [widths.rhs swEnd]
++				spiro-outline
++					corner r 0
++					corner ([mix 0 Descender TanSlope] - r + swEnd) Descender
++					corner ([mix 0 Descender TanSlope] - r) Descender
++					corner (r - swEnd) 0
+ 
+ 	define [RevCommaShape kdr o] : namespace
+ 		define r : PeriodRadius * kdr
+@@ -117,11 +117,11 @@ glyph-block Symbol-Punctuation-Small : begin
+ 		export : define [square cx cy] : with-transform [Translate cx cy] : glyph-proc
+ 			include : union
+ 				SquareAt 0 r r
+-				dispiro
+-					flat (-r) r [widths.lhs sw]
+-					curl (-r) 0
+-					quadControls (0 - TanSlope / 2) (0.5 - TanSlope * (r / Descender)) 12
+-					g4 ([mix 0 Descender TanSlope] + commaOverflow) Descender [widths.lhs swEnd]
++				spiro-outline
++					corner (-r) 0
++					corner ([mix 0 Descender TanSlope] + r - swEnd) Descender
++					corner ([mix 0 Descender TanSlope] + r) Descender
++					corner (-r + swEnd) 0
+ 
+ 	foreach { suffix { DrawAt kDotRadius overshoot } } [Object.entries DotVariants] : do
+ 		create-glyph "comma.\(suffix)" : glyph-proc

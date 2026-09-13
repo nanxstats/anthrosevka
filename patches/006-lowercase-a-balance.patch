@@ -1,0 +1,44 @@
+diff --git a/packages/font-glyphs/src/letter/latin/lower-a.ptl b/packages/font-glyphs/src/letter/latin/lower-a.ptl
+index 04ca025..faab6a5 100644
+--- a/packages/font-glyphs/src/letter/latin/lower-a.ptl
++++ b/packages/font-glyphs/src/letter/latin/lower-a.ptl
+@@ -37,16 +37,17 @@ glyph-block Letter-Latin-Lower-A : begin
+ 
+ 		define [ADoubleStoreyHookAndBarT sink] : function [df hookStyle y0 stroke fine] : begin
+ 			local isMask : sink == spiro-outline
++			local hookLeft : mix df.leftSB df.rightSB 0.08
+ 			return : sink
+ 				widths.rhs stroke
+ 				match hookStyle
+ 					[Just HOOK-SLAB-INWARD] : InwardSlabArcStart.LtrRhs df.leftSB XH stroke AHook (swAfter -- fine)
+ 					__ : if fine
+ 						list
+-							g4.up.start (df.leftSB + OXHook) (XH - AHook) [heading Upward]
++							g4.up.start (hookLeft + OXHook) (XH - AHook) [heading Upward]
+ 							Arch.rhs XH (sw -- stroke) (swAfter -- fine)
+ 						list
+-							g4 df.leftSB (XH - AHook)
++							g4 hookLeft (XH - AHook)
+ 							HookStart XH (sw -- stroke)
+ 				flat (df.rightSB - [HSwToV : stroke - [fallback fine stroke]]) [Math.max (XH - [ADoubleStoreySmoothB df]) (y0 + TINY + [HSwToV : Math.abs : TanSlope * [fallback fine stroke]])] [if fine [widths.rhs fine] nothing]
+ 				[if isMask corner curl] (df.rightSB - [HSwToV : stroke - [fallback fine stroke]]) y0 [heading Downward]
+@@ -66,6 +67,7 @@ glyph-block Letter-Latin-Lower-A : begin
+ 		define [ADoubleStoreyArcT sink] : function [df kind rise stroke fine bbd] : glyph-proc
+ 			local isMask : sink == spiro-outline
+ 			local barTop : [mix 0 XH DesignParameters.aBarPos] + stroke * SwAboveBar
++			local barRise : XH * 0.055
+ 			local ada  : df.archDepthAOf (SmallArchDepth * 0.9) stroke
+ 			local adb  : df.archDepthBOf (SmallArchDepth * 0.9) stroke
+ 			local ada2 :    ArchDepthAOf (SmallArchDepth * DesignParameters.aBarPos)
+@@ -74,9 +76,8 @@ glyph-block Letter-Latin-Lower-A : begin
+ 			local leftSlope  : leftSlopeS - TanSlope
+ 			include : sink
+ 				widths.lhs stroke
+-				[if isMask corner flat] (df.rightSB + O) barTop [heading Leftward]
+-				curl [mix df.rightSB df.middle 0.9] barTop
+-				archv
++				[if isMask corner flat] (df.rightSB + O) (barTop + barRise) [heading Leftward]
++				bezControls 0.55 0.12 1 0.15 8
+ 				g4 (df.leftSB + OX) ([YSmoothMidL barTop 0 ada2 adb2] - [HSwToV leftSlopeS] * SmoothAdjust) [heading {.x HVContrast .y leftSlope}]
+ 				match kind
+ 					0 : list
